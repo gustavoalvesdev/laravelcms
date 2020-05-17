@@ -169,7 +169,7 @@ return [
 
     'dashboard_url' => 'home',
 
-    'logout_url' => 'logout',
+    'logout_url' => 'painel/logout',
 
     'login_url' => 'painel/login',
 
