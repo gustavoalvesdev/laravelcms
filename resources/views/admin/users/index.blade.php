@@ -18,12 +18,15 @@
         <!-- card-header -->
         <div class="card-body">
             <table class="table table-hover">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Ações</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
@@ -37,10 +40,12 @@
                         </td>
                     </tr>
                 @endforeach
+                </tbody>
             </table>
             <!-- table -->
         </div>
         <!-- card-body -->
     </div>
     <!-- card -->
+    {{ $users->links() }}
 @endsection
