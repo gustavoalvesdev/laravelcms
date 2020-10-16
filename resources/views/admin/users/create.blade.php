@@ -11,7 +11,7 @@
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <ul>
-                <h4 class="alert-heading">Erro(s) ocorrido(s):</h4>
+                <h5 class="alert-heading"><i class="icon fas fa-ban"></i> Erro(s) ocorrido(s):</h5>
                 <!-- alert-heading -->
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -26,71 +26,66 @@
         <!-- alert-danger -->
     @endif
 
-    <form method="POST" action="{{ route('users.store') }}" class="form-horizontal">
-        @csrf
-        <div class="form-group">
-            <div class="row">
-                <label class="col-sm-2 control-label">Nome Completo:</label>
-                <!-- col-sm-2 -->
-                <div class="col-sm-10">
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" />
-                    <!-- form-control -->
-                </div>
-                <!-- col-sm-10 -->
-                </div>
-                <!-- row -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Preencha os dados abaixo:</h5>
         </div>
-        <!-- form-group -->
-        <div class="form-group">
-            <div class="row">
-                <label class="col-sm-2 control-label">E-mail:</label>
-                <!-- col-sm-2 -->
-                <div class="col-sm-10">
-                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" />
-                    <!-- form-control -->
+        <!-- card-header -->
+        <div class="card-body">
+            <form method="POST" action="{{ route('users.store') }}" class="form-horizontal">
+                @csrf
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Nome Completo:</label>
+                    <!-- col-sm-2 -->
+                    <div class="col-sm-10">
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" />
+                        <!-- form-control -->
+                    </div>
+                    <!-- col-sm-10 -->
                 </div>
-                <!-- col-sm-10 -->
+                <!-- form-group -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">E-mail:</label>
+                    <!-- col-sm-2 -->
+                    <div class="col-sm-10">
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror"" />
+                        <!-- form-control -->
+                    </div>
+                    <!-- col-sm-10 -->
                 </div>
-                <!-- row -->
+                <!-- form-group -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Senha:</label>
+                    <!-- col-sm-2 -->
+                    <div class="col-sm-10">
+                        <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror"" />
+                        <!-- form-control -->
+                    </div>
+                    <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Confirmar Senha:</label>
+                    <!-- col-sm-2 -->
+                    <div class="col-sm-10">
+                        <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror"" />
+                        <!-- form-control -->
+                    </div>
+                    <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <!-- col-sm-2 -->
+                    <div class="col-sm-10">
+                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                    </div>
+                    <!-- col-sm-10 -->
+                </div>
+                <!-- form-group -->
+            </form>    
         </div>
-        <!-- form-group -->
-        <div class="form-group">
-            <div class="row">
-                <label class="col-sm-2 control-label">Senha:</label>
-                <!-- col-sm-2 -->
-                <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control" />
-                    <!-- form-control -->
-                </div>
-                <!-- col-sm-10 -->
-                </div>
-                <!-- row -->
-        </div>
-        <!-- form-group -->
-        <div class="form-group">
-            <div class="row">
-                <label class="col-sm-2 control-label">Confirmar Senha:</label>
-                <!-- col-sm-2 -->
-                <div class="col-sm-10">
-                    <input type="password" name="password_confirmation" class="form-control" />
-                    <!-- form-control -->
-                </div>
-                <!-- col-sm-10 -->
-                </div>
-                <!-- row -->
-        </div>
-        <!-- form-group -->
-        <div class="form-group">
-            <div class="row">
-                <label class="col-sm-2 control-label"></label>
-                <!-- col-sm-2 -->
-                <div class="col-sm-10">
-                    <input type="submit" value="Cadastrar" class="btn btn-success" />
-                </div>
-                <!-- col-sm-10 -->
-                </div>
-                <!-- row -->
-        </div>
-        <!-- form-group -->
-    </form>    
+        <!-- card-body -->
+    </div>
+    <!-- card -->
 @endsection
