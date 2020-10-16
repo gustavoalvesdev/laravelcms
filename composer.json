@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "jeroennoten/laravel-adminlte": "^3.2",
         "laravel/framework": "^7.0",
+        "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0"
     },
