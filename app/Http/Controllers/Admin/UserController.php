@@ -102,7 +102,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return Illuminate\View\View
      */
-    public function edit($id) : View
+    public function edit(int $id) : View
     {
 
         $user = User::find($id);
