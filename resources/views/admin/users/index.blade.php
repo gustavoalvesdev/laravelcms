@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    
+
     <div class="card">
         <div class="card-header">
             <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">Novo Usuário</a>
@@ -35,8 +35,13 @@
                         <td>
                             <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-sm btn-info">Editar</a>
                             <!-- btn -->
-                            <a href="{{ route('users.destroy', ['user' => $user->id]) }}" class="btn btn-sm btn-danger">Excluir</a>
-                            <!-- btn -->
+
+                            <form class="d-inline" method="POST" action="{{ route('users.destroy', ['user' => $user->id]) }}" onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-sm btn-danger">Excluir</button>
+                            </form>
+                            <!-- d-inline -->
                         </td>
                     </tr>
                 @endforeach

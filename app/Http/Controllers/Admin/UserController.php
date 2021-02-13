@@ -5,17 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\View\View
      */
-    public function index()
+    public function index() : View
     {
         $users = User::paginate(10);
 
@@ -27,9 +30,9 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\View\View
      */
-    public function create()
+    public function create() : View
     {
         return view('admin.users.create');
     }
@@ -38,9 +41,9 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         $data = $request->only([
             'name',
@@ -76,7 +79,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -85,9 +88,9 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\Http\RedirectResponse
      */
-    public function edit($id)
+    public function edit($id) : RedirectResponse
     {
 
         $user = User::find($id);
@@ -106,14 +109,14 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id) : RedirectResponse
     {
         $user = User::find($id);
 
         if ($user) {
-            
+
             $data = $request->only([
                 'name',
                 'email',
@@ -134,7 +137,7 @@ class UserController extends Controller
             if ($user->email != $data['email']) {
                 $hasEmail = User::where('email', $data['email'])->get();
                 if (count($hasEmail) === 0) {
-                    $user->email = $data['email']; 
+                    $user->email = $data['email'];
                 } else {
                     $validator->errors()->add('email', __('validation.unique', [
                         'attribute' => 'email'
@@ -158,7 +161,7 @@ class UserController extends Controller
                         'min' => 4
                     ]));
                 }
-                
+
             }
 
             if (count($validator->errors()) > 0) {
@@ -179,8 +182,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+
+        $loggedId = Auth::id();
+
+        // prevent from deleting the logged in user
+        if ($loggedId !== $id) {
+            $user = User::find($id);
+            $user->delete();
+        }
+
+        return redirect()->route('users.index');
     }
 }
