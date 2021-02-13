@@ -17,6 +17,9 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        // user permissions
+        $this->middleware('can:edit-users');
     }
 
     /**
@@ -97,9 +100,9 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Illuminate\Http\RedirectResponse
+     * @return Illuminate\View\View
      */
-    public function edit($id) : RedirectResponse
+    public function edit($id) : View
     {
 
         $user = User::find($id);
