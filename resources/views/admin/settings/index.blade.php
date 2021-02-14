@@ -21,6 +21,18 @@
         <!-- alert alert-danger -->
     @endif
 
+    @if (@session('warning'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('warning') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="text-light">&times;</span>
+                <!-- text-light -->
+            </button>
+            <!-- close -->
+        </div>
+        <!-- alert-success -->
+    @endif
+
     <div class="card">
         <div class="card-body">
             <form action="{{ route('settings.save') }}" method="POST" class="form-horizontal">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 use App\Setting;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
@@ -37,7 +38,12 @@ class SettingController extends Controller
         ]);
     }
 
-    public function save(Request $request)
+    /**
+     * @param Request $request
+     *
+     * @return Illuminate\Http\RedirectResponse
+     */
+    public function save(Request $request) : RedirectResponse
     {
         $data = $request->only([
             'title', 'subtitle', 'email', 'bgcolor', 'textcolor'
@@ -50,11 +56,17 @@ class SettingController extends Controller
            ->withErrors($validator);
         }
 
-        // TODO: save
-        echo 'Salvando';
+        foreach($data as $item => $value) {
+
+            Setting::where('name', $item)->update([
+                'content' => $value
+            ]);
+
+        }
 
         // redirect to settings page
-        # return redirect()->route('settings');
+        return redirect()->route('settings')
+            ->with('warning', 'Informações alteradas com sucesso!');
     }
 
     /**
