@@ -16,7 +16,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Título do Site</label>
                     <div class="col-sm-10">
-                        <input type="text" name="title" value="" class="form-control" />
+                        <input type="text" name="title" value="{{ $settings['title'] }}" class="form-control" />
                         <!-- form-control -->
                     </div>
                     <!-- col-sm-10 -->
@@ -26,7 +26,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Subtítulo do Site</label>
                     <div class="col-sm-10">
-                        <input type="text" name="subtitle" value="" class="form-control" />
+                        <input type="text" name="subtitle" value="{{ $settings['subtitle'] }}" class="form-control" />
                         <!-- form-control -->
                     </div>
                     <!-- col-sm-10 -->
@@ -36,7 +36,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">E-mail para Contato</label>
                     <div class="col-sm-10">
-                        <input type="email" name="email" value="" class="form-control" />
+                        <input type="email" name="email" value="{{ $settings['email'] }}" class="form-control" />
                         <!-- form-control -->
                     </div>
                     <!-- col-sm-10 -->
@@ -46,7 +46,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Cor do Fundo</label>
                     <div class="col-sm-10">
-                        <input type="color" name="bgcolor" value="" class="form-control" />
+                        <input type="color" name="bgcolor" value="{{ $settings['bgcolor'] }}" class="form-control" />
                         <!-- form-control -->
                     </div>
                     <!-- col-sm-10 -->
@@ -56,7 +56,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Cor do Texto</label>
                     <div class="col-sm-10">
-                        <input type="color" name="textcolor" value="" class="form-control" />
+                        <input type="color" name="textcolor" value="{{ $settings['textcolor'] }}" class="form-control" />
                         <!-- form-control -->
                     </div>
                     <!-- col-sm-10 -->
