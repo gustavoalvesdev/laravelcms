@@ -154,7 +154,7 @@ class PageController extends Controller
             $page->title = $data['title'];
             $page->body = $data['body'];
 
-            if (! empty($page['slug'])) {
+            if (! empty($data['slug'])) {
                 $page->slug = $data['slug'];
             }
 

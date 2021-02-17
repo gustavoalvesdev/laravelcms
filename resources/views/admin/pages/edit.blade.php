@@ -50,7 +50,7 @@
                     <label class="col-sm-2 col-form-label">Corpo</label>
                     <!-- col-sm-2 -->
                     <div class="col-sm-10">
-                        <textarea name="body" class="form-control">{{ $page->body }}</textarea>
+                        <textarea name="body" class="form-control bodyfield">{{ $page->body }}</textarea>
                         <!-- form-control -->
                     </div>
                     <!-- col-sm-10 -->
@@ -70,4 +70,28 @@
         <!-- card-body -->
     </div>
     <!-- card -->
+
+    <script src="https://cdn.tiny.cloud/1/b42us2li6se82g05p71vf5ym73octeflt91cvxkuv2yr8c5d/tinymce/5/tinymce.min.js">
+    </script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea.bodyfield',
+            'height': 300,
+            'menubar': false,
+            'plugins': [
+                'link',
+                'table',
+                'image',
+                'autoresize',
+                'lists'
+            ],
+            'toolbar': 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | table | link image | bullist numlist',
+            'content_css': [
+                '{{ asset('assets/css/content.css') }}'
+            ]
+        });
+
+    </script>
+
 @endsection
