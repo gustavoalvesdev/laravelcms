@@ -60,7 +60,8 @@
                     <label class="col-sm-2 col-form-label"></label>
                     <!-- col-sm-2 -->
                     <div class="col-sm-10">
-                        <input type="submit" value="Salvar" class="btn btn-success" />
+                        <input type="submit" value="Salvar" class="btn btn-success" />&nbsp;&nbsp;
+                        <a class="btn btn-secondary" href="{{ route('pages.index') }}">Cancelar</a>
                     </div>
                     <!-- col-sm-10 -->
                 </div>
@@ -88,8 +89,11 @@
             ],
             'toolbar': 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | table | link image | bullist numlist',
             'content_css': [
-                '{{ asset('assets/css/content.css') }}'
-            ]
+                "{{ asset('assets/css/content.css') }}"
+            ],
+            'images_upload_url': "{{ route('imageupload') }}",
+            'images_upload_credentials': true,
+            'convert_urls': false
         });
 
     </script>
