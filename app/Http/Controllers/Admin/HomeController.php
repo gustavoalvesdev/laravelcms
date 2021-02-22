@@ -37,11 +37,23 @@ class HomeController extends Controller
         // Contagem de Usuários
         $userCount = User::count();
 
+        $pagePie = [
+            'Teste 1' => 100,
+            'Teste 2' => 200,
+            'Teste 3' => 300
+        ];
+
+        $pageLabels = json_encode(array_keys($pagePie));
+
+        $pageValues = json_encode(array_values($pagePie));
+
         return view('admin.home', [
             'visitsCount' => $visitsCount,
             'onlineCount' => $onlineCount,
             'pageCount' => $pageCount,
-            'userCount' => $userCount
+            'userCount' => $userCount,
+            'pageLabels' => $pageLabels,
+            'pageValues' => $pageValues
         ]);
     }
 }
