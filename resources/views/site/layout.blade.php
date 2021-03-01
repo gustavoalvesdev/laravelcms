@@ -24,18 +24,23 @@
             <!-- logo -->
             <nav class="menu-desktop">
                 <ul>
-                    <li class="selected"><a href="index.html">Home</a></li>
+
+                    @foreach($frontMenu as $menuSlug => $menuTitle)
+                    <li><a href="{{$menuSlug}}">{{$menuTitle}}</a></li>
+                    @endforeach
+
+                    <!-- <li class="selected"><a href="index.html">Home</a></li>
                     <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="contato.html">Contato</a></li> -->
                 </ul>
             </nav>
             <!-- menu-deskop -->
             <nav class="menu-mobile">
                 <h2><i class="fa fa-bars"></i></h2>
                 <ul>
-                    <li class="selected"><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    @foreach($frontMenu as $menuSlug => $menuTitle)
+                    <li><a href="{{$menuSlug}}">{{$menuTitle}}</a></li>
+                    @endforeach
                 </ul>
             </nav>
             <!-- menu-mobile -->
