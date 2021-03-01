@@ -64,6 +64,7 @@
                 <div class="links">
                     <h5>Links Úteis</h5>
                     <p><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                    <p><a href="#"><i class="fas fa-envelope"></i> {{$frontConfig['email']}}</a></p>
                 </div>
                 <!-- links -->
                 <div class="redes">
