@@ -1,4 +1,4 @@
-# Painel Administrativo para Sites em Laravel 7
+# Laravel CMS Admin Panel for Websites
 Projeto de painel administrativo para websites utilizando Laravel 7 e banco de dados MySQL, utilizando o pacote jeroennoten/Laravel-AdminLTE para a UI
 
 ## Sobre
